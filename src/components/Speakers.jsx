@@ -12,27 +12,27 @@ import lucas from '@/images/avatars/lucas.jpg'
 const team = [
   {
     name: 'Lucas Chu',
-    role: 'General Partner',
+    role: 'General Partner, founder of DAOHQ',
     image: lucas,
   },
   {
     name: 'Andrew Wang',
-    role: 'General Partner',
+    role: 'General Partner, founder of The UR VR',
     image: andrew,
   },
   {
     name: 'Jose Betancourt',
-    role: 'General Partner',
+    role: 'General Partner, founder of Ontropy',
     image: jose,
   },
   {
     name: 'Gabriel Romualdo',
-    role: 'General Partner',
+    role: 'General Partner, founder of Thirdbuy',
     image: gabriel,
   },
   {
     name: 'Shafqat Huq',
-    role: 'Director',
+    role: 'Director, founder of FestFriends',
     image: shafqat,
   },
 ]
