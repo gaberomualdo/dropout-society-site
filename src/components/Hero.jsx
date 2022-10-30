@@ -23,18 +23,18 @@ export function Hero() {
           </div>
           <div className="mt-6 space-y-6 font-display text-2xl tracking-tight text-gray-700">
             <p>
-              The most iconic people, from Bill Gates to Steven Spielberg to
-              Madonna, have been dropouts. Whether they help start a new country
-              like Alexander Hamilton or change the world of entertainment like
-              Oprah, dropouts change the world.
+              Many of the most iconic people, from Bill Gates to Steven
+              Spielberg to Madonna, have been dropouts. Whether they help start
+              a new country like Alexander Hamilton or change the world of
+              entertainment like Oprah, dropouts change the world.
             </p>
             <p>
               But dropping out is difficult. It’s a contrarian decision to leave
-              the traditional path, forging one’s own path, against the wishes
-              of one’s community, parents, and even self. Most dropouts don’t
-              know other dropouts personally. We haven’t had the chance to have
-              a real community of people who we can relate to, get support from,
-              and work together with.
+              the traditional path, forging one’s own path, often against the
+              wishes of one’s community, parents, and even self. Most dropouts
+              don’t know other dropouts personally. We haven’t had the chance to
+              have a real community of people who we can relate to, get support
+              from, and work together with.
             </p>
             <p>
               <strong className="font-medium">
@@ -42,7 +42,7 @@ export function Hero() {
                 founded by dropouts — and would-be dropouts — with $25-150K
                 first checks.
               </strong>{' '}
-              This includes a kick start and intros to our network so founders
+              This includes a kickstart and intros to our network so founders
               can get support, mentoring, and advising. We'll give you the
               support and the courage, with our community and that first check,
               to take the leap into starting a disruptive company full-time.
