@@ -25,8 +25,8 @@ export function Hero() {
             <p>
               Many of the most iconic people, from Bill Gates to Steven
               Spielberg to Madonna, have been dropouts. Whether they help start
-              a new country like Alexander Hamilton or change the world of
-              entertainment like Oprah, dropouts change the world.
+              a new country like Alexander Hamilton or become stars like Oprah,
+              dropouts change the world.
             </p>
             <p>
               But dropping out is difficult. It’s a contrarian decision to leave
