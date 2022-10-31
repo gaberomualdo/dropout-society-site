@@ -3,6 +3,8 @@ import { Logo } from '@/components/Logo'
 import Link from 'next/link'
 import clsx from 'clsx'
 import { useEffect, useState } from 'react'
+import { getPageData } from 'lib/utils'
+import { setupSupabase } from 'lib/auth-utils'
 
 export function LinkButton({ active, href, className, cta, ...props }) {
   className = clsx(
@@ -22,7 +24,12 @@ export function LinkButton({ active, href, className, cta, ...props }) {
     <button className={className} {...props} />
   )
 }
-export function Header({ nav }) {
+export function Header() {
+  const [signedIn, setSignedIn] = useState(false)
+  const [authToken, setAuthToken] = useState(null)
+  const [activeLabel, setActiveLabel] = useState(null)
+
+  const { nav, ctaKey } = getPageData(signedIn)
   const keys = Object.keys(nav)
   const pathKeysMap = {
     '/': keys[0],
@@ -31,7 +38,15 @@ export function Header({ nav }) {
     '/apply': 'Apply',
   }
 
-  const [activeLabel, setActiveLabel] = useState(null)
+  useEffect(() => {
+    const supabase = setupSupabase()
+    supabase.auth.onAuthStateChange((event, session) => {
+      if (session?.access_token) {
+        setSignedIn(true)
+        setAuthToken(session?.access_token)
+      }
+    })
+  }, [setSignedIn, setAuthToken])
 
   useEffect(() => {
     if (typeof window === 'undefined') return
@@ -70,12 +85,12 @@ export function Header({ nav }) {
           <Logo className="h-10 w-auto text-slate-900 sm:h-12" />
         </div>
         <div className="hidden sm:mt-10 sm:flex lg:mt-0 lg:grow lg:basis-0 lg:justify-end">
-          {Object.keys(nav).map((label) => (
+          {keys.map((label, labelIdx) => (
             <LinkButton
               href={nav[label]}
               onClick={() => setTimeout(() => setActiveLabel(label), 200)}
               active={activeLabel === label}
-              cta={label.toLowerCase() === 'apply'}
+              cta={label === ctaKey}
             >
               {label}
             </LinkButton>

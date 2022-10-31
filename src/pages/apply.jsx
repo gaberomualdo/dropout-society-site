@@ -3,13 +3,13 @@ import Head from 'next/head'
 import { getPageData } from '../../lib/utils'
 
 export default function Apply() {
-  const { nav, title } = getPageData()
+  const { title } = getPageData()
   return (
     <>
       <Head>
         <title>{title}</title>
       </Head>
-      <Header nav={nav} active="Apply" />
+      <Header active="Apply" />
       <iframe
         title="component"
         style={{

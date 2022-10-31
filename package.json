@@ -12,6 +12,7 @@
   "dependencies": {
     "@headlessui/react": "^1.7.2",
     "@heroicons/react": "^2.0.12",
+    "@supabase/supabase-js": "^2.0.4",
     "autoprefixer": "^10.4.12",
     "clsx": "^1.2.1",
     "focus-visible": "^5.2.0",
