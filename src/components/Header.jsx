@@ -40,9 +40,7 @@ export function Header({ nav }) {
     for (const key of keys) {
       const hash = window.location.hash.slice(1).toLowerCase()
       const keyFirstWord = key.split(' ')[0].toLowerCase()
-      console.log(hash, keyFirstWord)
       if (hash === keyFirstWord) {
-        console.log('hello')
         if (activeLabel !== key) setActiveLabel(key)
         return
       }
