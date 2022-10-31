@@ -17,7 +17,7 @@ const team = [
   },
   {
     name: 'Andrew Wang',
-    role: 'Fund General Partner, Founder of The UR VR',
+    role: 'Fund General Partner, Founder of The Ur',
     image: andrew,
   },
   {
