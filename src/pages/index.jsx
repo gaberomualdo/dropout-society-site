@@ -7,7 +7,7 @@ import { getPageData } from '../../lib/utils'
 export default function Home() {
   const { nav, content, title } = getPageData()
   let active = null
-  if (typeof window === 'string') {
+  if (typeof window !== 'undefined') {
     if (window.location.hash.includes('blog')) {
       active = 'Blog'
     }
