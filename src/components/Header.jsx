@@ -2,7 +2,7 @@ import { Container } from '@/components/Container'
 import { Logo } from '@/components/Logo'
 import Link from 'next/link'
 import clsx from 'clsx'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 
 export function LinkButton({ active, href, className, cta, ...props }) {
   className = clsx(
@@ -22,11 +22,43 @@ export function LinkButton({ active, href, className, cta, ...props }) {
     <button className={className} {...props} />
   )
 }
-export function Header({ nav, active }) {
+export function Header({ nav }) {
   const keys = Object.keys(nav)
-  const [activeLabel, setActiveLabel] = useState(
-    active && keys.includes(active) ? active : keys[0]
-  )
+  const pathKeysMap = {
+    '/': keys[0],
+    '/login': 'Login',
+    '/community': 'Community',
+    '/apply': 'Apply',
+  }
+
+  const [activeLabel, setActiveLabel] = useState(null)
+
+  useEffect(() => {
+    if (typeof window === 'undefined') return
+
+    // add in active label for hash
+    for (const key of keys) {
+      const hash = window.location.hash.slice(1).toLowerCase()
+      const keyFirstWord = key.split(' ')[0].toLowerCase()
+      console.log(hash, keyFirstWord)
+      if (hash === keyFirstWord) {
+        console.log('hello')
+        if (activeLabel !== key) setActiveLabel(key)
+        return
+      }
+    }
+
+    // add in active label for pathname
+    const path =
+      '/' +
+      window.location.pathname.split('/').join(' ').trim().split(' ').join('/')
+    const pathKey = pathKeysMap[path]
+    if (pathKey) {
+      if (activeLabel !== pathKey) setActiveLabel(pathKey)
+      return
+    }
+  }, [setActiveLabel, activeLabel])
+
   return (
     <header
       className="relative sticky top-0 z-50 border-b py-6"

@@ -6,19 +6,13 @@ import { getPageData } from '../../lib/utils'
 
 export default function Home() {
   const { nav, content, title } = getPageData()
-  let active = null
-  if (typeof window !== 'undefined') {
-    if (window.location.hash.includes('blog')) {
-      active = 'Blog'
-    }
-  }
 
   return (
     <>
       <Head>
         <title>{title}</title>
       </Head>
-      <Header nav={nav} active={active} />
+      <Header nav={nav} />
       <main>{content}</main>
       <Footer />
     </>
