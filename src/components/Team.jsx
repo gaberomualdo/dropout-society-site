@@ -154,8 +154,8 @@ export function Team({ signedIn = false }) {
 
   return (
     <section
-      id={signedIn ? 'community' : 'team'}
-      className={signedIn ? 'pt-16 pb-20' : 'border-t py-20 sm:py-32'}
+      id={signedIn ? 'explore' : 'team'}
+      className={signedIn ? 'pt-24 pb-20' : 'border-t py-20 sm:py-32'}
     >
       {/* <ImageClipPaths id={id} /> */}
       <Container>

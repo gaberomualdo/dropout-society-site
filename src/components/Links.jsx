@@ -32,7 +32,7 @@ export function Links({ signedIn = false }) {
       title: 'Explore',
       description:
         'Meet the people and companies that make up the dropout club community.',
-      url: '/#community',
+      url: '/#explore',
       icon: (
         <svg
           xmlns="http://www.w3.org/2000/svg"
