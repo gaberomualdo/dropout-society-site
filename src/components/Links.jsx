@@ -1,7 +1,7 @@
 import Image from 'next/future/image'
 
 import { Container } from '@/components/Container'
-import { colors, getFundURL, hoverColors } from 'lib/utils'
+import { colors, getFundURL, getTimeOfDay, hoverColors } from 'lib/utils'
 
 export function Links({ signedIn = false }) {
   const iconClassname = 'w-16 h-16'
@@ -140,12 +140,16 @@ export function Links({ signedIn = false }) {
   }
 
   return (
-    <section id="links" className={signedIn ? 'border-b' : 'border-t'}>
+    <section id="links" className={signedIn ? '' : 'border-t'}>
       <Container>
-        <div className="relative overflow-hidden py-24 md:rounded-5xl">
+        <div
+          className={`relative overflow-hidden md:rounded-5xl ${
+            signedIn ? 'pt-16 pb-8' : 'py-24'
+          }`}
+        >
           {signedIn && (
             <h1 className="mb-6 font-display text-4xl font-medium tracking-tight">
-              Browse DropoutClub
+              Good {getTimeOfDay()}!
             </h1>
           )}
           <div className="relative mx-auto grid max-w-2xl grid-cols-1 gap-x-8 gap-y-8 xl:max-w-none xl:grid-cols-2">

@@ -5,22 +5,13 @@ import { Container } from '@/components/Container'
 import { colors, getFundURL, hoverColors } from 'lib/utils'
 
 export function CommunityHero() {
-  const getTimeOfDay = () => {
-    const hour = new Date().getHours() + 1
-    if (hour > 4 && hour < 14) return 'morning'
-    if (hour < 18) return 'afternoon'
-    return 'evening'
-  }
   const iconClassname = 'w-9 h-9'
   return (
-    <div className="relative pt-10" id="about">
+    <div className="relative border-b pb-20 pt-10" id="about">
       <Container className="relative">
         <div className="flex w-full flex-col rounded-xl border py-10 px-10 shadow-lg">
-          <h1 className="mb-4 font-display text-4xl font-medium tracking-tight">
-            Good {getTimeOfDay()}!{' '}
-            <span className="font-normal text-gray-500">
-              A few things you can do:
-            </span>
+          <h1 className="mb-4 font-display text-4xl font-medium tracking-tight text-gray-800">
+            A few more things you can do:
           </h1>
           <div className="relative grid grid-cols-1 gap-x-4 gap-y-4 xl:max-w-none xl:grid-cols-2">
             {[
