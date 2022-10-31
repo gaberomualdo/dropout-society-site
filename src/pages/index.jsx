@@ -5,7 +5,7 @@ import { Header } from '@/components/Header'
 import { getPageData } from '../../lib/utils'
 
 export default function Home() {
-  const { nav, content } = getPageData()
+  const { nav, content, title } = getPageData()
   let active = null
   if (typeof window === 'string') {
     if (window.location.hash.includes('blog')) {
@@ -14,6 +14,9 @@ export default function Home() {
   }
   return (
     <>
+      <Head>
+        <title>{title}</title>
+      </Head>
       <Header nav={nav} active={active} />
       <main>{content}</main>
       <Footer />

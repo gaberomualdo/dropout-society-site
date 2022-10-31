@@ -4,9 +4,12 @@ import { Team } from '@/components/Team'
 import { getPageData } from '../../lib/utils'
 
 export default function Apply() {
-  const { nav } = getPageData()
+  const { nav, title } = getPageData()
   return (
     <>
+      <Head>
+        <title>{title}</title>
+      </Head>
       <Header nav={nav} active="Login" />
       <div>
         <div className="flex min-h-full flex-col justify-center py-28 sm:px-6 lg:px-8">
