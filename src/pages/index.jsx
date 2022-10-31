@@ -12,6 +12,7 @@ export default function Home() {
       active = 'Blog'
     }
   }
+
   return (
     <>
       <Head>
