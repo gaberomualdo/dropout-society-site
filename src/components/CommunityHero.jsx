@@ -103,7 +103,6 @@ export function CommunityHero() {
               },
             ].map((elm, i) => (
               <a
-                target="_blank"
                 key={i}
                 href={elm.url}
                 className={`flex cursor-pointer justify-between space-x-4 rounded-xl border px-5 py-3.5 transition-all hover:bg-gray-100`}
