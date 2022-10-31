@@ -73,7 +73,7 @@ export function Header({ nav }) {
           {Object.keys(nav).map((label) => (
             <LinkButton
               href={nav[label]}
-              onClick={() => setActiveLabel(label)}
+              onClick={() => setTimeout(() => setActiveLabel(label), 200)}
               active={activeLabel === label}
               cta={label.toLowerCase() === 'apply'}
             >
