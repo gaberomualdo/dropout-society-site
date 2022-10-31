@@ -36,7 +36,7 @@ export function Newsletter() {
             </div>
             <form>
               <h3 className="mt-8 font-display text-lg font-semibold tracking-tight text-gray-900">
-                Sign up to our newsletter <span aria-hidden="true">&darr;</span>
+                Sign up to read the blog <span aria-hidden="true">&darr;</span>
               </h3>
               <div className="mt-5 mr-2 flex rounded-3xl bg-white py-2 pr-2.5 shadow-xl shadow-gray-900/5 focus-within:ring-2 focus-within:ring-gray-900">
                 <input

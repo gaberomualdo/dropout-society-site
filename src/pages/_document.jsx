@@ -1,9 +1,12 @@
+import { getPageData } from '../../lib/utils'
 import { Head, Html, Main, NextScript } from 'next/document'
 
 export default function Document() {
+  const { title } = getPageData()
   return (
     <Html className="bg-white antialiased" lang="en">
       <Head>
+        <title>{title}</title>
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link
           rel="preconnect"

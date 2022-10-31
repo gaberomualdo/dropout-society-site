@@ -2,25 +2,29 @@ import Head from 'next/head'
 
 import { Footer } from '@/components/Footer'
 import { Header } from '@/components/Header'
-import { Hero } from '@/components/Hero'
-import { Newsletter } from '@/components/Newsletter'
-import { Pitch } from '@/components/Pitch'
-import { Speakers } from '@/components/Speakers'
+import { getPageData } from '../../lib/utils'
 
 export default function Home() {
+  const { nav, content } = getPageData()
+  let active = null
+  if (typeof window === 'string') {
+    if (window.location.hash.includes('blog')) {
+      active = 'Blog'
+    }
+  }
   return (
     <>
-      <Head>
-        <title>DropoutFund - An Early-Stage VC Fund for Dropouts</title>
-      </Head>
-      <Header />
-      <main>
-        <Hero />
-        <Speakers />
-        <Newsletter />
-        <Pitch />
-      </main>
+      <Header nav={nav} active={active} />
+      <main>{content}</main>
       <Footer />
     </>
   )
+}
+
+export function getServerSideProps({ req }) {
+  return {
+    props: {
+      domain: req.headers.host,
+    },
+  }
 }

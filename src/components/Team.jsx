@@ -12,27 +12,27 @@ import lucas from '@/images/avatars/lucas.jpg'
 const team = [
   {
     name: 'Lucas Chu',
-    role: 'General Partner, Founder of DAOHQ',
+    role: 'Fund General Partner, Founder of DAOHQ',
     image: lucas,
   },
   {
     name: 'Andrew Wang',
-    role: 'General Partner, Founder of The UR VR',
+    role: 'Fund General Partner, Founder of The UR VR',
     image: andrew,
   },
   {
     name: 'Jose Betancourt',
-    role: 'General Partner, Founder of Ontropy',
+    role: 'Fund General Partner, Founder of Ontropy',
     image: jose,
   },
   {
     name: 'Gabriel Romualdo',
-    role: 'General Partner, Founder of Thirdbuy',
+    role: 'Fund General Partner, Founder of Thirdbuy',
     image: gabriel,
   },
   {
     name: 'Shafqat Huq',
-    role: 'Director, Founder of FestFriends',
+    role: 'Fund Director, Founder of FestFriends',
     image: shafqat,
   },
 ]
@@ -55,7 +55,7 @@ function ImageClipPaths({ id, ...props }) {
   )
 }
 
-export function Speakers() {
+export function Team() {
   let id = useId()
   let [tabOrientation, setTabOrientation] = useState('horizontal')
 
@@ -79,14 +79,11 @@ export function Speakers() {
       <ImageClipPaths id={id} />
       <Container>
         <div className="mx-auto max-w-2xl lg:mx-0">
-          <h2
-            id="speakers-title"
-            className="font-display text-4xl font-medium tracking-tighter text-gray-800 sm:text-5xl"
-          >
-            Team
+          <h2 className="font-display text-4xl font-medium tracking-tighter text-gray-800 sm:text-5xl">
+            Team & Community
           </h2>
           <p className="mt-4 font-display text-2xl tracking-tight text-gray-700">
-            Meet the people that make DropoutFund a reality.
+            Meet the people that make this a reality.
           </p>
         </div>
         <div className="mt-14 grid grid-cols-1 items-start gap-y-8 gap-x-8 sm:mt-16 sm:gap-y-16 lg:mt-24 lg:grid-cols-4">
