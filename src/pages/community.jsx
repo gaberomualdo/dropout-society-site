@@ -11,7 +11,7 @@ export default function Apply() {
       <Head>
         <title>{title}</title>
       </Head>
-      <Header active="Community" />
+      <Header />
       <Team />
       <Footer />
     </>

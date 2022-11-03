@@ -13,7 +13,7 @@ export default function Apply({ authType }) {
       <Head>
         <title>{title}</title>
       </Head>
-      <Header active="Login" />
+      <Header />
       <div>
         <div className="flex min-h-full flex-col justify-center py-28 sm:px-6 lg:px-8">
           <div className="sm:mx-auto sm:w-full sm:max-w-md">

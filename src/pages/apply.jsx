@@ -9,7 +9,7 @@ export default function Apply() {
       <Head>
         <title>{title}</title>
       </Head>
-      <Header active="Apply" />
+      <Header />
       <iframe
         title="component"
         style={{
