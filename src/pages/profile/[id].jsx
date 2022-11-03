@@ -254,7 +254,7 @@ export async function getServerSideProps({ params }) {
       },
     }
   const profile = await (
-    await fetch('http://localhost:3000/api/profile?email=' + id)
+    await fetch('https://dropout.club/api/profile?email=' + id)
   ).json()
   if (!profile) {
     return {
