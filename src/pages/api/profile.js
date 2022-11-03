@@ -36,7 +36,14 @@ export default async function handler(req, res) {
       if (error) {
         res.status(500).json(error)
       } else if (data.length === 0) {
-        res.json(null)
+        await supabase.from('profiles').insert({
+          email,
+        })
+        const { data } = await supabase
+          .from('profiles')
+          .select('*')
+          .eq('email', email)
+        res.json(data[0])
       } else {
         res.json(data[0])
       }
