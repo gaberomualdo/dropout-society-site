@@ -64,11 +64,24 @@ export default function Apply() {
                 <div>
                   <button
                     type="button"
-                    onClick={() =>
-                      alert(
-                        "Referrals don't work yet! Reach out directly to one of the directors on Slack to make a referral."
-                      )
-                    }
+                    onClick={async () => {
+                      const nameInput = document.querySelector('#name')
+                      const emailInput = document.querySelector('#email')
+                      await fetch('/api/event', {
+                        method: 'POST',
+                        headers: {
+                          'Content-Type': 'application/json',
+                        },
+                        body: JSON.stringify({
+                          name: nameInput.value,
+                          email: emailInput.value,
+                          type: 'referral',
+                        }),
+                      })
+                      nameInput.value = ''
+                      emailInput.value = ''
+                      alert("Referred! We'll reach out to them soon.")
+                    }}
                     className="flex w-full justify-center rounded-md border border-transparent bg-gray-700 py-2 px-4 font-medium text-white shadow-sm hover:bg-gray-800 focus:outline-none focus:ring-2 focus:ring-gray-500 focus:ring-offset-2"
                   >
                     Refer &rarr;

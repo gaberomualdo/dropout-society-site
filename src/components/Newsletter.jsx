@@ -49,9 +49,16 @@ export function Newsletter() {
                 />
                 <Button
                   type="button"
-                  onClick={() => {
-                    amplitude.getInstance().logEvent('NEWSLETTER_EMAIL', {
-                      email: document.getElementById('newsletter-email').value,
+                  onClick={async () => {
+                    const email =
+                      document.getElementById('newsletter-email').value
+                    document.getElementById('newsletter-email').value = ''
+                    await fetch('/api/event', {
+                      method: 'POST',
+                      headers: {
+                        'Content-Type': 'application/json',
+                      },
+                      body: JSON.stringify({ email, type: 'newsletter' }),
                     })
                     alert('Added to newsletter!')
                   }}

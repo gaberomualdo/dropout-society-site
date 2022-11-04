@@ -251,7 +251,7 @@ export function Pitch() {
                     <div className="sm:col-span-2 sm:flex sm:justify-end">
                       <button
                         type="button"
-                        onClick={() => {
+                        onClick={async () => {
                           const props = {}
                           for (const val of [
                             'first-name',
@@ -262,8 +262,15 @@ export function Pitch() {
                             'message',
                           ]) {
                             props[val] = document.getElementById(val).value
+                            document.getElementById(val).value = ''
                           }
-                          amplitude.getInstance().logEvent('PITCH', props)
+                          await fetch('/api/event', {
+                            method: 'POST',
+                            headers: {
+                              'Content-Type': 'application/json',
+                            },
+                            body: JSON.stringify({ ...props, type: 'pitch' }),
+                          })
                           alert("Thanks for pitching! We'll be in touch soon.")
                         }}
                         className="mt-2 inline-flex w-full items-center justify-center rounded-md border border-transparent bg-gray-700 px-6 py-3 text-base font-medium text-white shadow-sm hover:bg-gray-800 focus:outline-none focus:ring-2 focus:ring-gray-700 focus:ring-offset-2 sm:w-auto"
