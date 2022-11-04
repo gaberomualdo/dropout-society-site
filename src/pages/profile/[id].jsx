@@ -6,7 +6,7 @@ import { Team } from '@/components/Team'
 import { setupSupabase } from 'lib/auth-utils'
 import Head from 'next/head'
 import { useEffect, useState } from 'react'
-import { getPageData } from '../../../lib/utils'
+import { getBucketBaseURL, getPageData } from '../../../lib/utils'
 import Select from 'react-select'
 
 export default function Profile({ initialProfile, redirectToUserProfile }) {
@@ -73,16 +73,23 @@ export default function Profile({ initialProfile, redirectToUserProfile }) {
                     id="photo"
                     name="photo"
                     className="hidden"
-                    onChange={(e) => {
+                    onChange={async (e) => {
+                      const supabase = setupSupabase()
                       const file = e.target.files[0]
-                      const reader = new FileReader()
-                      reader.readAsDataURL(file)
-                      reader.onload = function () {
-                        setProfile({ ...profile, photo: reader.result })
-                      }
-                      reader.onerror = function (error) {
-                        alert('Could not read uploaded file. Please try again.')
-                      }
+                      const ext = e.target.value.split('.').pop()
+                      const filePath = `public/profiles/${btoa(
+                        profile.email
+                      )}-${new Date().getTime()}.${ext}`
+                      await supabase.storage
+                        .from('main')
+                        .upload(filePath, file, {
+                          cacheControl: 3600,
+                          upsert: true,
+                        })
+                      setProfile({
+                        ...profile,
+                        photo: `${getBucketBaseURL()}/${filePath}`,
+                      })
                     }}
                   />
                   <Button className="mt-6 w-full" small labelFor={'photo'}>
@@ -131,20 +138,23 @@ export default function Profile({ initialProfile, redirectToUserProfile }) {
                 {[
                   {
                     label: 'Website',
+                    id: 'website',
                     value: profile.website,
-                    placeholder: '(Website URL here)',
+                    placeholder: 'https://example.com/',
                     href: profile.website,
                   },
                   {
                     label: 'LinkedIn',
+                    id: 'linkedin',
                     value: profile.linkedin,
-                    placeholder: '(LinkedIn URL here)',
+                    placeholder: 'https://linkedin.com/in/example',
                     href: profile.linkedin,
                   },
                   {
-                    label: 'Twitter',
+                    label: 'Twitter Handle',
+                    id: 'twitter',
                     value: profile.twitter,
-                    placeholder: '(Twitter handle here)',
+                    placeholder: '@example',
                     href: profile.twitter
                       ? 'https://twitter.com/' + profile.twitter
                       : '',
