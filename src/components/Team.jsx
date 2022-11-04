@@ -84,7 +84,7 @@ export function Team({ signedIn = false, fund = false }) {
   return (
     <section
       id={signedIn ? 'explore' : 'team'}
-      className={`${signedIn ? 'pt-24 pb-20' : 'py-20 sm:py-32'} ${
+      className={`${signedIn ? 'pt-12 pb-20' : 'py-20 sm:py-32'} ${
         fund ? 'border-t' : ''
       }`}
     >

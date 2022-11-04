@@ -194,24 +194,24 @@ export function Links({ signedIn = false }) {
               Good {getTimeOfDay()}!
             </h1>
           )}
-          <div className="relative mx-auto grid max-w-2xl grid-cols-1 gap-x-8 gap-y-8 xl:max-w-none xl:grid-cols-2">
+          <div className="relative mx-auto grid max-w-2xl grid-cols-1 gap-x-5 gap-y-5 xl:max-w-none xl:grid-cols-2">
             {(signedIn
               ? [
                   links.slack,
                   links.privateCommunity,
                   links.fund,
-                  links.profile,
-                  links.refer,
                   links.blog,
+                  links.refer,
+                  links.profile,
                 ]
               : [links.publicCommunity, links.fund, links.blog, links.apply]
             ).map((elm, i) => (
               <a
                 href={elm.url}
-                className={`flex cursor-pointer justify-between space-x-6 rounded-2xl bg-gray-100 py-8 px-10 transition-all ${hoverColors[i]}`}
+                className={`flex cursor-pointer justify-between space-x-6 rounded-xl bg-gray-100 py-6 px-7 transition-all ${hoverColors[i]}`}
               >
                 <div>
-                  <p className="font-display text-3xl font-medium tracking-tighter text-gray-900 sm:text-5xl">
+                  <p className="font-display text-3xl font-medium tracking-tighter text-gray-900 sm:text-4xl">
                     {elm.title}
                   </p>
                   <p className="mt-2.5 text-xl tracking-tight text-gray-600">
