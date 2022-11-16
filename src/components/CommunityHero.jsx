@@ -39,7 +39,7 @@ export function CommunityHero() {
               {
                 title: 'Join the Slack',
                 description: 'Our Slack group is the core of our community.',
-                url: 'https://join.slack.com/t/dropoutclub/shared_invite/zt-1ivni8ais-NOy77mUvawCdK3a__J05LQ',
+                url: 'https://i.dropout.club/',
                 icon: (
                   <svg
                     xmlns="http://www.w3.org/2000/svg"

@@ -75,7 +75,7 @@ export function Links({ signedIn = false }) {
     slack: {
       title: 'Slack Community',
       description: 'Our Slack group is the core of our community.',
-      url: 'https://join.slack.com/t/dropoutclub/shared_invite/zt-1ivni8ais-NOy77mUvawCdK3a__J05LQ',
+      url: 'https://i.dropout.club/',
       icon: (
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -96,7 +96,7 @@ export function Links({ signedIn = false }) {
     refer: {
       title: 'Refer a friend',
       description: 'Most of our new members come from referrals.',
-      url: 'https://join.slack.com/t/dropoutclub/shared_invite/zt-1ivni8ais-NOy77mUvawCdK3a__J05LQ',
+      url: 'https://i.dropout.club/',
       icon: (
         <svg
           xmlns="http://www.w3.org/2000/svg"
