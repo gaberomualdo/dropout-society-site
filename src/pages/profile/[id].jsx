@@ -144,20 +144,18 @@ export default function Profile({ initialProfile, redirectToUserProfile }) {
                     href: profile.website,
                   },
                   {
-                    label: 'LinkedIn',
+                    label: 'LinkedIn URL',
                     id: 'linkedin',
                     value: profile.linkedin,
                     placeholder: 'https://linkedin.com/in/example',
                     href: profile.linkedin,
                   },
                   {
-                    label: 'Twitter Handle',
+                    label: 'Twitter URL',
                     id: 'twitter',
                     value: profile.twitter,
-                    placeholder: '@example',
-                    href: profile.twitter
-                      ? 'https://twitter.com/' + profile.twitter
-                      : '',
+                    placeholder: 'https://twitter.com/@example',
+                    href: profile.twitter,
                   },
                 ]
                   .filter((e) => (editing ? true : e.href.trim().length > 0))
@@ -173,10 +171,32 @@ export default function Profile({ initialProfile, redirectToUserProfile }) {
                           value={link.value}
                           placeholder={link.placeholder}
                           onClick={() => {
-                            if (!editing && link.href.trim().length > 0)
-                              window.open(link.href, '_blank')
+                            if (!editing && link.href.trim().length > 0) {
+                              let href = link.href
+                              if (
+                                link.id === 'twitter' &&
+                                !href.includes('twitter.com')
+                              ) {
+                                href = 'https://twitter.com/' + href
+                              }
+                              if (
+                                link.id === 'linkedin' &&
+                                !href.includes('linkedin.com')
+                              ) {
+                                href = 'https://linkedin.com/in/' + href
+                              }
+                              if (
+                                !(
+                                  href.startsWith('http://') ||
+                                  href.startsWith('https://')
+                                )
+                              ) {
+                                href = `https://${href}`
+                              }
+                              window.open(href, '_blank')
+                            }
                           }}
-                          onChange={inputOnChange(link.label.toLowerCase())}
+                          onChange={inputOnChange(link.id)}
                           onFocus={(e) => {
                             if (!editing) e.target.blur()
                           }}
