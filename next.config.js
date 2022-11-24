@@ -9,7 +9,7 @@ const nextConfig = {
   async redirects() {
     return [
       {
-        source: '/fund',
+        source: '/deck',
         destination: 'https://docsend.com/view/gxy7zqnwwbrnxnz3',
         permanent: false,
       },
