@@ -11,9 +11,11 @@ import Select from 'react-select'
 
 export default function Profile({ initialProfile, redirectToUserProfile }) {
   const { title } = getPageData()
-  const [profile, setProfile] = useState(initialProfile)
+  const [profile, setProfile] = useState(null)
   const [signedInEmail, setSignedInEmail] = useState(null)
   const [editing, setEditing] = useState(false)
+
+  const loading = redirectToUserProfile || !profile
 
   const profileRoles =
     profile?.roles.trim().length > 0 ? profile?.roles.split(',') : []
@@ -32,6 +34,20 @@ export default function Profile({ initialProfile, redirectToUserProfile }) {
   if (redirectToUserProfile && signedInEmail) {
     window.open('/profile/' + signedInEmail, '_self')
   }
+
+  useEffect(() => {
+    const updateProfile = async () => {
+      const newProfile = await (
+        await fetch(
+          `https://dropout.club/api/profile?email=${id}&signedIn=${
+            id === signedInEmail ? 'true' : 'false'
+          }`
+        )
+      ).json()
+      setProfile(newProfile)
+    }
+    updateProfile()
+  }, [setProfile, signedInEmail])
   useEffect(() => {
     const updateSignedInEmail = async () => {
       const supabase = setupSupabase()
